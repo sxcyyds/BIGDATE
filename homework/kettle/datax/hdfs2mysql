@@ -1,0 +1,41 @@
+{
+    "job": {
+        "content": [
+            {
+                "reader": {
+                    "name": "hdfsreader", 
+                    "parameter": {
+                        "column": [{"index":"0","type":"long"},{"index":"1","type":"string"}], 
+                        "defaultFS": "hdfs://hadoop10:8020", 
+                        "encoding": "UTF-8", 
+                        "fieldDelimiter": "\t", 
+                        "fileType": "text", 
+                        "path": "/datax/tb_test__3d1b41ed_a9a0_4447_83d9_91cb2c62daaf"
+                    }
+                }, 
+                "writer": {
+                    "name": "mysqlwriter", 
+                    "parameter": {
+                        "column": ["user_id","user_name"], 
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:mysql://hadoop12:3306/datax?characterEncoding=UTF-8", 
+                                "table": ["user_1"]
+                            }
+                        ], 
+                        "password": "123456", 
+                        "preSql": [], 
+                        "session": [], 
+                        "username": "root", 
+                        "writeMode": "insert"
+                    }
+                }
+            }
+        ], 
+        "setting": {
+            "speed": {
+                "channel": "1"
+            }
+        }
+    }
+}

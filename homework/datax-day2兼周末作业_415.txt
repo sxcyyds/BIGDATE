@@ -1,0 +1,24 @@
+有用户位置数据如下：
+zhangsan,2022-01-05,zhengzhou
+zhangsan,2022-01-08,shanghai
+lisi,2022-02-01,hangzhou
+lisi,2022-02-08,nanjing
+wangwu,2022-01-13,shenzhen
+wangwu,2022-01-11,chengdu
+
+要求：
+1、将数据发送到kafka某个topic中，名字自定义即可。
+2、开启一个flume，对kafka的数据进行消费，将消费到的数据输出到hdfs。（建议优先启动）
+3、创建hive表读取输出到hdfs的数据，并进行数据分析：
+通过SQL，计算每个用户的迁移信息，要求数据输出如下：
+zhangsan,2022-01-05至2022-01-08,zhengzhou,shanghai
+lisi,2022-02-01至2022-02-08,hangzhou,nanjing
+wangwu,2022-01-11至2022-01-13,chengdu,shenzhen
+
+输出的数据存在 4 个字段：
+姓名，时间段，出发城市，目的城市
+
+4、将输出的数据存放到一个新的结果表中（hive）
+5、分别通过sqoop和datax完成数据的同步，
+	- 将zhangsan的数据同步到MySQL中表tb_zs_ret （使用sqoop）
+	- 将其他用户的数据同步到MySQL中表tb_ot_ret （datax）

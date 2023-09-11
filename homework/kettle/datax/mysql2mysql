@@ -1,0 +1,44 @@
+{
+    "job": {
+        "content": [
+            {
+                "reader": {
+                    "name": "mysqlreader",
+                    "parameter": {
+                        "connection": [
+                            {
+                                "jdbcUrl": ["jdbc:mysql://hadoop10:3306/shixuchao?useSSL=false&useUnicode=true&characterEncoding=UTF-8"],
+                                "querySql": ["select name,age from student where age=1 "]
+                            }
+                        ],
+                        "password": "123456",
+                        "username": "root"
+                    }
+                },
+                "writer": {
+                    "name": "mysqlwriter",
+                    "parameter": {
+                        "column": ["name1","age1"],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:mysql://hadoop12:3306/datax?useSSL=false&useUnicode=true&characterEncoding=UTF-8",
+                                "table": ["student1"]
+                            }
+                        ],
+                        "password": "123456",
+                        "preSql": ["truncate table student1"],
+                        "session": [],
+                        "username": "root",
+                        "writeMode": "insert"
+                    }
+                }
+            }
+        ],
+        "setting": {
+            "speed": {
+                "channel": "1"
+            }
+        }
+    }
+}
+

@@ -1,0 +1,49 @@
+{
+    "job": {
+        "content": [
+            {
+                "reader": {
+                    "name": "mysqlreader", 
+                    "parameter": { 
+                        "connection": [
+                            {
+                                "jdbcUrl": ["jdbc:mysql://hadoop12:3306/datax?characterEncoding=UTF-8"], 
+                                "querySql": ["select * from user_1;"]
+                            }
+                        ], 
+                        "password": "123456", 
+                        "username": "root", 
+                    }
+                }, 
+                "writer": {
+                    "name": "ftpwriter", 
+                    
+                        "parameter": {
+                            "connectPattern": "PASV", 
+                            "dateFormat": "yyyy-MM-dd HH:mm:ss", 
+                            "encoding": "UTF-8", 
+                            "fieldDelimiter": "\t", 
+                            "fileFormat": "text", 
+                            "fileName": "b.txt", 
+                            "header": [], 
+                            "host": "hadoop10", 
+                            "nullFormat": "\\N", 
+                            "password": "root", 
+                            "path": "/opt/data", 
+                            "port": "22", 
+                            "protocol": "sftp", 
+                            "timeout": "60000", 
+                            "username": "root", 
+                            "writeMode": "truncate"
+                        }
+                    }
+                }
+            
+        ], 
+        "setting": {
+            "speed": {
+                "channel": "1"
+            }
+        }
+    }
+}
